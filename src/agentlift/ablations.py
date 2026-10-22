@@ -39,6 +39,8 @@ def run_ablations(
 ) -> tuple[pd.DataFrame, dict]:
     """Run each variant on the ablation subset and score it against the real experiment."""
     large, small = models
+    if base_config.provider == "mock":
+        requests_per_minute = 1_000_000
     owns_cache = cache is None
     cache = cache or ResponseCache()
     rows, reports, frames = [], {}, {}

@@ -121,6 +121,9 @@ def run_simulation(
 ) -> pd.DataFrame:
     """Run every sampled customer under all three conditions (within-subject)."""
     provider = get_provider(config.provider, seed=config.seed)
+    if config.provider == "mock":
+        # The mock provider makes no network calls, so the RPM limit would only waste time.
+        requests_per_minute = 1_000_000
     owns_cache = cache is None
     cache = cache or ResponseCache()
     try:
