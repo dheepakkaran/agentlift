@@ -1,0 +1,18 @@
+# Direct dependencies, pinned.
+pandas==3.0.6
+numpy==2.5.4
+scipy==1.18.1
+statsmodels==0.15.0
+scikit-learn==1.9.1
+scikit-uplift==0.5.1
+pydantic==2.14.1
+PyYAML==6.0.3
+python-dotenv==1.2.4
+tqdm==4.70.1
+groq==0.35.0
+google-genai==1.51.0
+mlflow==3.7.1
+streamlit==1.52.1
+plotly==6.5.1
+pytest==9.1.1
+ruff==0.17.1

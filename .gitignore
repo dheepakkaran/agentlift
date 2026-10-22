@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.env
+data/raw/
+results/mock/
+mlruns/
+logs/
+*.sqlite
+*.sqlite3
+.DS_Store
+.claude/
+build/
+dist/
