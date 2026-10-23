@@ -222,7 +222,17 @@ class GroqProvider(Provider):
             if getattr(m, "active", True)
             and not any(
                 tag in m.id.lower()
-                for tag in ("whisper", "tts", "guard", "embed", "vision-preview", "compound")
+                for tag in (
+                    "whisper",
+                    "tts",
+                    "guard",
+                    "embed",
+                    "vision-preview",
+                    "compound",
+                    "orpheus",  # speech synthesis
+                    "allam",  # not an English chat model
+                    "safeguard",
+                )
             )
         ]
 
