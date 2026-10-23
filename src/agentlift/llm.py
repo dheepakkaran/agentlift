@@ -16,6 +16,7 @@ from pathlib import Path
 from pydantic import BaseModel, Field, field_validator
 
 DEFAULT_CACHE = Path("data/raw/llm_cache.sqlite")
+MAX_COMPLETION_TOKENS = 300
 _JSON_BLOCK = re.compile(r"\{.*\}", re.DOTALL)
 
 
@@ -250,11 +251,18 @@ class GroqProvider(Provider):
 
     async def complete(self, prompt: str, model: str, temperature: float, spec: CallSpec) -> str:
         del spec
+        extra: dict = {}
+        if "gpt-oss" in model:
+            # These models emit reasoning tokens, which count against the tokens-per-minute
+            # limit. The task is a one-shot judgement, so low effort is enough.
+            extra["reasoning_effort"] = "low"
         completion = await self._client.chat.completions.create(
             model=model,
             temperature=temperature,
             response_format={"type": "json_object"},
+            max_completion_tokens=MAX_COMPLETION_TOKENS,
             messages=[{"role": "user", "content": prompt}],
+            **extra,
         )
         return completion.choices[0].message.content or ""
 
@@ -335,7 +343,7 @@ class AgentRunner:
         cache: ResponseCache | None = None,
         concurrency: int = 8,
         requests_per_minute: int = 28,
-        max_retries: int = 3,
+        max_retries: int = 6,
     ):
         self.provider = provider
         self.cache = cache if cache is not None else ResponseCache()
