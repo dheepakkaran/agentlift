@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pandas as pd
 import yaml
+from dotenv import load_dotenv
 
 from . import ablations, experiment, fidelity, lock, report, tracking
 from .data import load
@@ -229,6 +230,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> None:
+    load_dotenv()
     parser = build_parser()
     args = parser.parse_args(argv)
     args.func(args)
