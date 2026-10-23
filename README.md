@@ -106,3 +106,23 @@ reports/          findings memo
 
 MIT — see [LICENSE](LICENSE). Author: Dheepak Karan Elumalai Santhakumari
 ([linkedin.com/in/dheepakkaran](https://linkedin.com/in/dheepakkaran)).
+
+<!-- RESULTS:START -->
+## Results
+
+| Arm | Real ATE (pp) | Real 95% CI | Simulated ATE (pp) | Absolute error (pp) | Sign agrees |
+| --- | ---: | :---: | ---: | ---: | :---: |
+| Mens E-Mail | +7.66 | +7.00 to +8.32 | -2.89 | 10.55 | no |
+| Womens E-Mail | +4.52 | +3.89 to +5.16 | -2.38 | 6.90 | no |
+
+- Agents: **100** simulated customers, each run under all three conditions (300 agent responses).
+- Winning arm: the simulation does not reproduce the real ordering of the three arms (Kendall tau -1.00).
+- Primary metric: mean absolute ATE error **8.73 pp** across the two e-mail arms.
+- Baseline calibration: the simulated no-e-mail visit rate is **57.78 pp** away from the real control rate of 10.62%.
+- Segment fidelity: Spearman rho **-0.07** over 24 segment-by-arm comparisons with at least 15 simulated customers.
+- Anchored to the real control rate (uses real data, so not a blind prediction): mean absolute ATE error **6.50 pp**.
+- Relevance effect: agents lift visits by +5.0 pp when the e-mail matches the customer's buying history and -12.5 pp when it does not (men's arm); the mean matched-minus-mismatched gap across both arms is **19.3 pp**.
+- Ablations: best variant `A1_persona` at 2.22 pp, worst `A3_temperature` at 9.21 pp.
+
+Full write-up: [reports/findings.md](reports/findings.md).
+<!-- RESULTS:END -->
