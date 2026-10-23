@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import contextlib
+import os
 from collections.abc import Iterator
 from pathlib import Path
 
@@ -16,6 +17,8 @@ def run(name: str, params: dict | None = None, enabled: bool = True) -> Iterator
     if not enabled:
         yield None
         return
+    # The local file store is in maintenance mode upstream and raises unless opted into.
+    os.environ.setdefault("MLFLOW_ALLOW_FILE_STORE", "true")
     try:
         import mlflow
     except ImportError:

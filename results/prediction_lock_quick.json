@@ -1,0 +1,16 @@
+{
+  "config": {
+    "framing": "neutral",
+    "model": "openai/gpt-oss-120b",
+    "model_size": "large",
+    "persona_level": "full",
+    "provider": "groq",
+    "seed": 42,
+    "temperature": 0.7
+  },
+  "locked_at_utc": "2026-10-23T22:33:19+00:00",
+  "mode": "quick",
+  "n_rows": 300,
+  "sha256": "6c17c5945fd6a3dbc8cc4fa80a2a99a9cb5834f8475dc14ffebc801c94d33657",
+  "sim_file": "results/sim_main_quick.jsonl"
+}
