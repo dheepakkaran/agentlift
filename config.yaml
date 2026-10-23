@@ -23,9 +23,9 @@ simulation:
 
 llm:
   provider: mock
-  concurrency: 8
-  requests_per_minute: 28
-  max_retries: 3
+  concurrency: 3
+  requests_per_minute: 14
+  max_retries: 6
   cache_path: data/raw/llm_cache.sqlite
 
 fidelity:
