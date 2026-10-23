@@ -1,0 +1,145 @@
+{
+  "robustness": {
+    "ate_std_pp": {
+      "sim_ate_pp[Mens E-Mail]": 4.636533666915883,
+      "sim_ate_pp[Womens E-Mail]": 4.947951315668155
+    },
+    "best_variant": "A1_persona",
+    "max_ate_spread_pp": 12.866666666666669,
+    "n_variants": 5,
+    "primary_metric_std_pp": 2.8677292003373687,
+    "worst_variant": "A3_temperature"
+  },
+  "variants": {
+    "A1_persona": {
+      "arm_ranking_match": false,
+      "baseline_calibration_error_pp": 60.94993898432368,
+      "per_arm": {
+        "Mens E-Mail": {
+          "ate_abs_error_pp": 3.358956365153124,
+          "real_ate_pp": 7.6589563651531245,
+          "sign_agreement": true,
+          "sim_ate_binary_pp": 13.333333333333334,
+          "sim_ate_pp": 4.300000000000001,
+          "sim_ci_high_pp": 10.7,
+          "sim_ci_low_pp": -1.5999999999999996
+        },
+        "Womens E-Mail": {
+          "ate_abs_error_pp": 1.0766893412947036,
+          "real_ate_pp": 4.523310658705299,
+          "sign_agreement": true,
+          "sim_ate_binary_pp": 13.333333333333334,
+          "sim_ate_pp": 5.600000000000002,
+          "sim_ci_high_pp": 11.468333333333328,
+          "sim_ci_low_pp": 0.46666666666666784
+        }
+      },
+      "primary_metric_mean_ate_abs_error_pp": 2.2178228532239137,
+      "segment_spearman_rho": -0.4285714285714286
+    },
+    "A2_model": {
+      "arm_ranking_match": false,
+      "baseline_calibration_error_pp": 32.783272317657,
+      "per_arm": {
+        "Mens E-Mail": {
+          "ate_abs_error_pp": 9.958956365153124,
+          "real_ate_pp": 7.6589563651531245,
+          "sign_agreement": false,
+          "sim_ate_binary_pp": 0.0,
+          "sim_ate_pp": -2.3,
+          "sim_ci_high_pp": 7.135833333333319,
+          "sim_ci_low_pp": -12.5025
+        },
+        "Womens E-Mail": {
+          "ate_abs_error_pp": 2.356643992038634,
+          "real_ate_pp": 4.523310658705299,
+          "sign_agreement": true,
+          "sim_ate_binary_pp": 10.0,
+          "sim_ate_pp": 2.1666666666666647,
+          "sim_ci_high_pp": 14.53499999999999,
+          "sim_ci_low_pp": -10.566666666666666
+        }
+      },
+      "primary_metric_mean_ate_abs_error_pp": 6.157800178595879,
+      "segment_spearman_rho": -0.08571428571428573
+    },
+    "A3_temperature": {
+      "arm_ranking_match": false,
+      "baseline_calibration_error_pp": 67.34993898432369,
+      "per_arm": {
+        "Mens E-Mail": {
+          "ate_abs_error_pp": 11.72562303181979,
+          "real_ate_pp": 7.6589563651531245,
+          "sign_agreement": false,
+          "sim_ate_binary_pp": -3.3333333333333335,
+          "sim_ate_pp": -4.0666666666666655,
+          "sim_ci_high_pp": -0.9999999999999999,
+          "sim_ci_low_pp": -8.6
+        },
+        "Womens E-Mail": {
+          "ate_abs_error_pp": 6.689977325371965,
+          "real_ate_pp": 4.523310658705299,
+          "sign_agreement": false,
+          "sim_ate_binary_pp": 0.0,
+          "sim_ate_pp": -2.1666666666666665,
+          "sim_ci_high_pp": -0.6666666666666665,
+          "sim_ci_low_pp": -3.734166666666667
+        }
+      },
+      "primary_metric_mean_ate_abs_error_pp": 9.207800178595878,
+      "segment_spearman_rho": -0.3142857142857143
+    },
+    "A4_framing": {
+      "arm_ranking_match": false,
+      "baseline_calibration_error_pp": 44.11660565099032,
+      "per_arm": {
+        "Mens E-Mail": {
+          "ate_abs_error_pp": 13.925623031819793,
+          "real_ate_pp": 7.6589563651531245,
+          "sign_agreement": false,
+          "sim_ate_binary_pp": -13.333333333333334,
+          "sim_ate_pp": -6.2666666666666675,
+          "sim_ci_high_pp": 1.300833333333329,
+          "sim_ci_low_pp": -14.501666666666665
+        },
+        "Womens E-Mail": {
+          "ate_abs_error_pp": 3.8233106587052976,
+          "real_ate_pp": 4.523310658705299,
+          "sign_agreement": true,
+          "sim_ate_binary_pp": 3.3333333333333335,
+          "sim_ate_pp": 0.7000000000000008,
+          "sim_ci_high_pp": 11.099999999999998,
+          "sim_ci_low_pp": -10.300833333333332
+        }
+      },
+      "primary_metric_mean_ate_abs_error_pp": 8.874466845262546,
+      "segment_spearman_rho": -0.2571428571428572
+    },
+    "baseline": {
+      "arm_ranking_match": false,
+      "baseline_calibration_error_pp": 38.34993898432365,
+      "per_arm": {
+        "Mens E-Mail": {
+          "ate_abs_error_pp": 4.292289698486457,
+          "real_ate_pp": 7.6589563651531245,
+          "sign_agreement": true,
+          "sim_ate_binary_pp": 16.666666666666664,
+          "sim_ate_pp": 3.366666666666667,
+          "sim_ci_high_pp": 11.034166666666664,
+          "sim_ci_low_pp": -3.833333333333333
+        },
+        "Womens E-Mail": {
+          "ate_abs_error_pp": 6.176689341294704,
+          "real_ate_pp": 4.523310658705299,
+          "sign_agreement": true,
+          "sim_ate_binary_pp": 26.666666666666668,
+          "sim_ate_pp": 10.700000000000003,
+          "sim_ci_high_pp": 17.36833333333333,
+          "sim_ci_low_pp": 4.433333333333335
+        }
+      },
+      "primary_metric_mean_ate_abs_error_pp": 5.23448951989058,
+      "segment_spearman_rho": -0.3142857142857143
+    }
+  }
+}

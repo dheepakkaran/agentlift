@@ -1,0 +1,415 @@
+{
+  "anchored_to_real_control": {
+    "mean_ate_abs_error_pp": 6.500125872206606,
+    "note": "Uses the real control rate, so it is NOT part of the blind prediction.",
+    "per_arm": {
+      "Mens E-Mail": {
+        "ate_abs_error_pp": 8.107528631263815,
+        "sim_ate_pp": -0.44857226611069106
+      },
+      "Womens E-Mail": {
+        "ate_abs_error_pp": 4.892723113149398,
+        "sim_ate_pp": -0.36941245444409865
+      }
+    },
+    "scale_factor": 0.15521531699331872
+  },
+  "arm_ranking_match": false,
+  "baseline_calibration_error_pp": 57.78327231765701,
+  "kendall_tau": -1.0,
+  "kendall_tau_p": 0.3333333333333333,
+  "lock": {
+    "config": {
+      "framing": "neutral",
+      "model": "openai/gpt-oss-120b",
+      "model_size": "large",
+      "persona_level": "full",
+      "provider": "groq",
+      "seed": 42,
+      "temperature": 0.7
+    },
+    "locked_at_utc": "2026-10-23T22:33:19+00:00",
+    "mode": "quick",
+    "n_rows": 300,
+    "sha256": "6c17c5945fd6a3dbc8cc4fa80a2a99a9cb5834f8475dc14ffebc801c94d33657",
+    "sim_file": "results/sim_main_quick.jsonl"
+  },
+  "mechanism_plausibility": {
+    "directional_checks": [
+      {
+        "condition": "mens",
+        "match": false,
+        "real_most_responsive": "Urban",
+        "segment_var": "zip_code",
+        "sim_most_responsive": "Surburban"
+      },
+      {
+        "condition": "womens",
+        "match": false,
+        "real_most_responsive": "Surburban",
+        "segment_var": "zip_code",
+        "sim_most_responsive": "Urban"
+      },
+      {
+        "condition": "mens",
+        "match": false,
+        "real_most_responsive": "Multichannel",
+        "segment_var": "channel",
+        "sim_most_responsive": "Phone"
+      },
+      {
+        "condition": "womens",
+        "match": false,
+        "real_most_responsive": "Multichannel",
+        "segment_var": "channel",
+        "sim_most_responsive": "Web"
+      },
+      {
+        "condition": "mens",
+        "match": false,
+        "real_most_responsive": "0",
+        "segment_var": "newbie",
+        "sim_most_responsive": "1"
+      },
+      {
+        "condition": "womens",
+        "match": true,
+        "real_most_responsive": "1",
+        "segment_var": "newbie",
+        "sim_most_responsive": "1"
+      },
+      {
+        "condition": "mens",
+        "match": false,
+        "real_most_responsive": "womens only",
+        "segment_var": "buyer_category",
+        "sim_most_responsive": "mens only"
+      },
+      {
+        "condition": "womens",
+        "match": true,
+        "real_most_responsive": "womens only",
+        "segment_var": "buyer_category",
+        "sim_most_responsive": "womens only"
+      },
+      {
+        "condition": "mens",
+        "match": false,
+        "real_most_responsive": "3) $200 - $350",
+        "segment_var": "history_segment",
+        "sim_most_responsive": "2) $100 - $200"
+      },
+      {
+        "condition": "womens",
+        "match": false,
+        "real_most_responsive": "1) $0 - $100",
+        "segment_var": "history_segment",
+        "sim_most_responsive": "3) $200 - $350"
+      }
+    ],
+    "directional_match_rate": 0.2,
+    "email_keywords": [
+      "email",
+      "e-mail",
+      "message",
+      "promotion",
+      "offer",
+      "newsletter",
+      "campaign",
+      "inbox"
+    ],
+    "n_visit_reasons": 242,
+    "persona_keywords": [
+      "bought",
+      "purchase",
+      "order",
+      "spent",
+      "shopped",
+      "recent",
+      "month",
+      "loyal",
+      "regular",
+      "browsing",
+      "rural",
+      "suburb",
+      "city",
+      "online",
+      "phone",
+      "new to",
+      "men",
+      "women"
+    ],
+    "reason_citation_share": 1.0
+  },
+  "n_customers": 100,
+  "n_responses": 300,
+  "per_arm": {
+    "Mens E-Mail": {
+      "ate_abs_error_pp": 10.548956365153124,
+      "real_ate_pp": 7.6589563651531245,
+      "sign_agreement": false,
+      "sim_ate_binary_pp": 3.0,
+      "sim_ate_pp": -2.8899999999999997,
+      "sim_ci_high_pp": 0.571749999999991,
+      "sim_ci_low_pp": -6.3004999999999995
+    },
+    "Womens E-Mail": {
+      "ate_abs_error_pp": 6.903310658705299,
+      "real_ate_pp": 4.523310658705299,
+      "sign_agreement": false,
+      "sim_ate_binary_pp": 2.0,
+      "sim_ate_pp": -2.38,
+      "sim_ci_high_pp": 1.4202499999999985,
+      "sim_ci_low_pp": -6.400500000000002
+    }
+  },
+  "persona_match_effects": {
+    "mean_match_gap_pp": 19.2656466748266,
+    "mens": {
+      "matched_lift_pp": 5.0,
+      "mismatched_lift_pp": -12.533333333333333,
+      "n_matched": 55,
+      "n_mismatched": 45
+    },
+    "womens": {
+      "matched_lift_pp": 6.649122807017544,
+      "mismatched_lift_pp": -14.348837209302326,
+      "n_matched": 57,
+      "n_mismatched": 43
+    }
+  },
+  "primary_metric_mean_ate_abs_error_pp": 8.726133511929211,
+  "real_arm_visit_rates": {
+    "Mens E-Mail": 0.18275684047496127,
+    "No E-Mail": 0.10616727682343002,
+    "Womens E-Mail": 0.151400383410483
+  },
+  "real_ranking": [
+    "Mens E-Mail",
+    "Womens E-Mail",
+    "No E-Mail"
+  ],
+  "segment_lift_spearman": {
+    "min_segment_n": 15,
+    "n_segments_compared": 24,
+    "pairs": [
+      {
+        "condition": "mens",
+        "n_sim": 51,
+        "real_lift_pp": 7.433718665294288,
+        "segment_level": "Surburban",
+        "segment_var": "zip_code",
+        "sim_lift_pp": -2.215686274509804
+      },
+      {
+        "condition": "mens",
+        "n_sim": 38,
+        "real_lift_pp": 7.964111521494538,
+        "segment_level": "Urban",
+        "segment_var": "zip_code",
+        "sim_lift_pp": -3.236842105263158
+      },
+      {
+        "condition": "womens",
+        "n_sim": 51,
+        "real_lift_pp": 4.886266065540677,
+        "segment_level": "Surburban",
+        "segment_var": "zip_code",
+        "sim_lift_pp": -5.509803921568627
+      },
+      {
+        "condition": "womens",
+        "n_sim": 38,
+        "real_lift_pp": 4.6943031758265334,
+        "segment_level": "Urban",
+        "segment_var": "zip_code",
+        "sim_lift_pp": 1.4736842105263173
+      },
+      {
+        "condition": "mens",
+        "n_sim": 15,
+        "real_lift_pp": 8.293672314062261,
+        "segment_level": "Multichannel",
+        "segment_var": "channel",
+        "sim_lift_pp": -4.333333333333334
+      },
+      {
+        "condition": "mens",
+        "n_sim": 46,
+        "real_lift_pp": 7.560427135853316,
+        "segment_level": "Phone",
+        "segment_var": "channel",
+        "sim_lift_pp": -0.39130434782608636
+      },
+      {
+        "condition": "mens",
+        "n_sim": 39,
+        "real_lift_pp": 7.556315210258554,
+        "segment_level": "Web",
+        "segment_var": "channel",
+        "sim_lift_pp": -5.282051282051281
+      },
+      {
+        "condition": "womens",
+        "n_sim": 15,
+        "real_lift_pp": 4.7099975390105495,
+        "segment_level": "Multichannel",
+        "segment_var": "channel",
+        "sim_lift_pp": -3.733333333333333
+      },
+      {
+        "condition": "womens",
+        "n_sim": 46,
+        "real_lift_pp": 4.462977374557566,
+        "segment_level": "Phone",
+        "segment_var": "channel",
+        "sim_lift_pp": -4.869565217391305
+      },
+      {
+        "condition": "womens",
+        "n_sim": 39,
+        "real_lift_pp": 4.567652217377893,
+        "segment_level": "Web",
+        "segment_var": "channel",
+        "sim_lift_pp": 1.076923076923077
+      },
+      {
+        "condition": "mens",
+        "n_sim": 48,
+        "real_lift_pp": 7.783285081536925,
+        "segment_level": "0",
+        "segment_var": "newbie",
+        "sim_lift_pp": -3.0416666666666656
+      },
+      {
+        "condition": "mens",
+        "n_sim": 52,
+        "real_lift_pp": 7.53050156199182,
+        "segment_level": "1",
+        "segment_var": "newbie",
+        "sim_lift_pp": -2.7500000000000004
+      },
+      {
+        "condition": "womens",
+        "n_sim": 48,
+        "real_lift_pp": 4.012250763018146,
+        "segment_level": "0",
+        "segment_var": "newbie",
+        "sim_lift_pp": -2.791666666666666
+      },
+      {
+        "condition": "womens",
+        "n_sim": 52,
+        "real_lift_pp": 5.041718035881851,
+        "segment_level": "1",
+        "segment_var": "newbie",
+        "sim_lift_pp": -2.0
+      },
+      {
+        "condition": "mens",
+        "n_sim": 43,
+        "real_lift_pp": 6.915516417042274,
+        "segment_level": "mens only",
+        "segment_var": "buyer_category",
+        "sim_lift_pp": 5.209302325581396
+      },
+      {
+        "condition": "mens",
+        "n_sim": 45,
+        "real_lift_pp": 7.0579576632687795,
+        "segment_level": "womens only",
+        "segment_var": "buyer_category",
+        "sim_lift_pp": -12.533333333333335
+      },
+      {
+        "condition": "womens",
+        "n_sim": 43,
+        "real_lift_pp": 1.1078467244666392,
+        "segment_level": "mens only",
+        "segment_var": "buyer_category",
+        "sim_lift_pp": -14.348837209302326
+      },
+      {
+        "condition": "womens",
+        "n_sim": 45,
+        "real_lift_pp": 7.398533502084667,
+        "segment_level": "womens only",
+        "segment_var": "buyer_category",
+        "sim_lift_pp": 8.000000000000002
+      },
+      {
+        "condition": "mens",
+        "n_sim": 36,
+        "real_lift_pp": 6.8551917126138155,
+        "segment_level": "1) $0 - $100",
+        "segment_var": "history_segment",
+        "sim_lift_pp": -3.6944444444444446
+      },
+      {
+        "condition": "mens",
+        "n_sim": 22,
+        "real_lift_pp": 6.910951209917659,
+        "segment_level": "2) $100 - $200",
+        "segment_var": "history_segment",
+        "sim_lift_pp": 2.454545454545455
+      },
+      {
+        "condition": "mens",
+        "n_sim": 19,
+        "real_lift_pp": 8.43979066454816,
+        "segment_level": "3) $200 - $350",
+        "segment_var": "history_segment",
+        "sim_lift_pp": -3.736842105263158
+      },
+      {
+        "condition": "womens",
+        "n_sim": 36,
+        "real_lift_pp": 4.678188996291309,
+        "segment_level": "1) $0 - $100",
+        "segment_var": "history_segment",
+        "sim_lift_pp": -2.8055555555555554
+      },
+      {
+        "condition": "womens",
+        "n_sim": 22,
+        "real_lift_pp": 4.250418595601041,
+        "segment_level": "2) $100 - $200",
+        "segment_var": "history_segment",
+        "sim_lift_pp": -1.6818181818181817
+      },
+      {
+        "condition": "womens",
+        "n_sim": 19,
+        "real_lift_pp": 3.609483408142206,
+        "segment_level": "3) $200 - $350",
+        "segment_var": "history_segment",
+        "sim_lift_pp": -0.6315789473684201
+      }
+    ],
+    "skipped_small_segments": [
+      "buyer_category=both",
+      "history_segment=4) $350 - $500",
+      "history_segment=5) $500 - $750",
+      "history_segment=6) $750 - $1,000",
+      "history_segment=7) $1,000 +",
+      "zip_code=Rural"
+    ],
+    "spearman_p": 0.7436342012968032,
+    "spearman_rho": -0.07043478260869565
+  },
+  "sim_arm_rates_binary": {
+    "Mens E-Mail": 0.82,
+    "No E-Mail": 0.79,
+    "Womens E-Mail": 0.81
+  },
+  "sim_arm_rates_probability": {
+    "Mens E-Mail": 0.6551,
+    "No E-Mail": 0.684,
+    "Womens E-Mail": 0.6602
+  },
+  "sim_ranking": [
+    "No E-Mail",
+    "Womens E-Mail",
+    "Mens E-Mail"
+  ]
+}

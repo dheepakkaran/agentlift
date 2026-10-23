@@ -1,0 +1,6 @@
+ablation,variant,config,mean_ate_abs_error_pp,baseline_calibration_error_pp,arm_ranking_match,segment_spearman_rho,reason_citation_share,sim_ate_pp[Mens E-Mail],sim_ate_pp[Womens E-Mail]
+baseline,baseline,large/full/neutral/t0.7,5.23448951989058,38.34993898432365,False,-0.3142857142857143,1.0,3.366666666666667,10.700000000000003
+A1_persona,minimal persona,large/minimal/neutral/t0.7,2.2178228532239137,60.94993898432368,False,-0.4285714285714286,1.0,4.300000000000001,5.600000000000002
+A2_model,small model,small/full/neutral/t0.7,6.157800178595879,32.783272317657,False,-0.08571428571428573,1.0,-2.3,2.1666666666666647
+A3_temperature,temperature 0.0,large/full/neutral/t0,9.207800178595878,67.34993898432369,False,-0.3142857142857143,1.0,-4.0666666666666655,-2.1666666666666665
+A4_framing,realism framing,large/full/realism/t0.7,8.874466845262546,44.11660565099032,False,-0.2571428571428572,1.0,-6.2666666666666675,0.7000000000000008

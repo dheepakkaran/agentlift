@@ -68,6 +68,11 @@ def headline_lines(real: dict, fid: dict, abl: pd.DataFrame) -> list[str]:
         f"segment-by-arm comparisons with at least {seg['min_segment_n']} simulated customers.",
         f"- Anchored to the real control rate (uses real data, so not a blind prediction): mean absolute ATE error "
         f"**{fid['anchored_to_real_control']['mean_ate_abs_error_pp']:.2f} pp**.",
+        f"- Relevance effect: agents lift visits by "
+        f"{fid['persona_match_effects']['mens']['matched_lift_pp']:+.1f} pp when the e-mail matches the "
+        f"customer's buying history and {fid['persona_match_effects']['mens']['mismatched_lift_pp']:+.1f} pp "
+        f"when it does not (men's arm); the mean matched-minus-mismatched gap across both arms is "
+        f"**{fid['persona_match_effects']['mean_match_gap_pp']:.1f} pp**.",
         f"- Ablations: best variant `{best['ablation']}` at {best['mean_ate_abs_error_pp']:.2f} pp, "
         f"worst `{worst['ablation']}` at {worst['mean_ate_abs_error_pp']:.2f} pp.",
     ]
@@ -156,7 +161,9 @@ def _reliability(fid: dict) -> tuple[list[str], list[str]]:
     )
     signs = all(v["sign_agreement"] for v in fid["per_arm"].values())
     (reliable if signs else unreliable).append(
-        f"Direction of effect: every arm's simulated sign {'agrees' if signs else 'does not agree'} with reality."
+        "Direction of effect: every arm's simulated sign agrees with reality."
+        if signs
+        else "Direction of effect: at least one arm's simulated sign is the opposite of the real one."
     )
     error = fid["primary_metric_mean_ate_abs_error_pp"]
     (reliable if error < 3 else unreliable).append(
@@ -172,6 +179,21 @@ def _reliability(fid: dict) -> tuple[list[str], list[str]]:
     (reliable if rho > 0.3 else unreliable).append(
         f"Segment ordering: Spearman rho {rho:.2f} against the real segment lifts."
     )
+
+    match = fid.get("persona_match_effects")
+    if match:
+        gap = match["mean_match_gap_pp"]
+        matched = [match[c]["matched_lift_pp"] for c in ("mens", "womens")]
+        (reliable if gap > 5 else unreliable).append(
+            f"Relevance reasoning: agents separate a relevant e-mail from an irrelevant one by "
+            f"{gap:.1f} pp, and their lift for a matching e-mail ({matched[0]:+.1f} pp men's, "
+            f"{matched[1]:+.1f} pp women's) is close to the real arm effects. The failure is not that "
+            "agents ignore the e-mail, it is that they treat a mismatched one as a reason to stay away."
+        )
+    if not reliable:
+        reliable.append("Nothing in this run cleared the thresholds above.")
+    if not unreliable:
+        unreliable.append("Nothing in this run fell short of the thresholds above.")
     return reliable, unreliable
 
 

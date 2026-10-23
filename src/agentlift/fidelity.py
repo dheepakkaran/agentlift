@@ -192,6 +192,38 @@ def segment_correlation(
     }
 
 
+MATCHING_CATEGORIES = {"mens": {"mens only", "both"}, "womens": {"womens only", "both"}}
+
+
+def persona_match_effects(sim: pd.DataFrame, covariates: pd.DataFrame) -> dict:
+    """Split the simulated lift by whether the e-mail matched the customer's buying history.
+
+    This uses simulated responses and covariates only, never the real outcomes, so it is
+    available before the blind comparison.
+    """
+    merged = sim.merge(covariates[["customer_id", "buyer_category"]], on="customer_id", how="left")
+    wide = merged.pivot_table(
+        index=["customer_id", "buyer_category"], columns="condition", values="visit_probability"
+    ).reset_index()
+    out: dict = {}
+    for condition in EMAIL_CONDITIONS:
+        lift = (wide[condition] - wide["none"]) * 100
+        matched = wide["buyer_category"].isin(MATCHING_CATEGORIES[condition])
+        out[condition] = {
+            "matched_lift_pp": float(lift[matched].mean()) if matched.any() else float("nan"),
+            "n_matched": int(matched.sum()),
+            "mismatched_lift_pp": float(lift[~matched].mean()) if (~matched).any() else float("nan"),
+            "n_mismatched": int((~matched).sum()),
+        }
+    gaps = [
+        v["matched_lift_pp"] - v["mismatched_lift_pp"]
+        for v in out.values()
+        if not (np.isnan(v["matched_lift_pp"]) or np.isnan(v["mismatched_lift_pp"]))
+    ]
+    out["mean_match_gap_pp"] = float(np.mean(gaps)) if gaps else float("nan")
+    return out
+
+
 def _ranking(rates: dict[str, float]) -> list[str]:
     return [k for k, _ in sorted(rates.items(), key=lambda kv: -kv[1])]
 
@@ -275,6 +307,7 @@ def evaluate(
         "baseline_calibration_error_pp": float(baseline_error),
         "segment_lift_spearman": segments,
         "mechanism_plausibility": mechanism,
+        "persona_match_effects": persona_match_effects(sim, covariates),
         "anchored_to_real_control": {
             "note": "Uses the real control rate, so it is NOT part of the blind prediction.",
             "scale_factor": float(anchor),
